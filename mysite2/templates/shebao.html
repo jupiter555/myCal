@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>社保计算器</title>
+</head>
+<body>
+<form action="/shebao" method='POST'>
+    <div>
+    <label for="id_base">请输入基数</label>
+    <input type="input" name="base" id="id_base">
+    </div>
+    <div>
+    <label>请输选择户口</label>
+    <select name="is_city">
+        <option value ="1">城镇户口</option>
+        <option value ="0">农村户口</option>
+    </select>
+    </div>
+    <input type="submit" value="开始计算">
+    </form>
+
+{% if base %}
+
+<table>
+    <tr>
+        <th>项目</th>
+        <th>个人缴纳比例</th>
+        <th>单位缴纳比例</th>
+    </tr>
+    <tr>
+        <td>养老保险</td>
+        <td>{{ geRen_old }}</td>
+        <td>{{ danWei_old }}</td>
+    </tr>
+    <tr>
+        <td>失业</td>
+        <td>{{ geRen_out }}</td>
+        <td>{{ danWei_out }}</td>
+    </tr>
+    <tr>
+        <td>工伤保险</td>
+        <td>{{ geRen_work }}</td>
+        <td>{{ danWei_work }}</td>
+    </tr>
+    <tr>
+        <td>生育保险</td>
+        <td>{{ geRen_birth }}</td>
+        <td>{{ danWei_birth }}</td>
+    </tr>
+    <tr>
+        <td>医疗保险</td>
+        <td>{{ geRen_help }}</td>
+        <td>{{ danWei_help }}</td>
+    </tr>
+    <tr>
+        <td>公积金</td>
+        <td>{{ geRen_gold }}</td>
+        <td>{{ danWei_gold }}</td>
+    </tr>
+    <tr>
+        <td>个人缴费总和</td>
+        <td>{{ geRen }}</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>公司缴费总和</td>
+        <td>{{ danWei }}</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>纳入国家全额总和</td>
+        <td>{{ country }}</td>
+        <td></td>
+    </tr>
+</table>
+{% endif %}
+</body>
+</html>
